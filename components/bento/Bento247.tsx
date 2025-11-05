@@ -23,7 +23,7 @@ export function Bento247() {
 
         <div className="grid grid-cols-2 gap-4">
           <motion.div
-            className="text-center p-4 rounded-xl bg-white/10 backdrop-blur-sm"
+            className="text-center p-4 rounded-xl bg-white/10 backdrop-blur-sm overflow-hidden"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -35,7 +35,7 @@ export function Bento247() {
           </motion.div>
 
           <motion.div
-            className="text-center p-4 rounded-xl bg-white/10 backdrop-blur-sm"
+            className="text-center p-4 rounded-xl bg-white/10 backdrop-blur-sm overflow-hidden"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}

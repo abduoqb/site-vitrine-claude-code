@@ -56,9 +56,11 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button variant="primary" size="md">
-              Contact
-            </Button>
+            <a href="/projets">
+              <Button variant="primary" size="md">
+                Contact
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -93,9 +95,11 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <Button variant="primary" size="md" className="w-full mt-2">
-                Contact
-              </Button>
+              <a href="/projets">
+                <Button variant="primary" size="md" className="w-full mt-2">
+                  Contact
+                </Button>
+              </a>
             </div>
           </motion.div>
         )}

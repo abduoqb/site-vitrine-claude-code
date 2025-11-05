@@ -125,7 +125,7 @@ export function Footer() {
             <input
               type="email"
               placeholder="votre@email.com"
-              className="flex-1 px-4 py-2 rounded-button glass focus:outline-none focus:ring-2 focus:ring-primary-blue text-sm"
+              className="flex-1 px-4 py-2 rounded-button bg-gray-100 border border-gray-200 text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all text-sm"
             />
             <Button variant="primary" size="md" type="submit">
               <Send size={16} />

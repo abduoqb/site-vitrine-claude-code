@@ -81,10 +81,12 @@ export function Hero() {
               />
             </Button>
           </Link>
-          <Button variant="glass" size="lg" className="group min-w-[200px]">
-            <Mail size={20} />
-            Me contacter
-          </Button>
+          <Link href="/projets">
+            <Button variant="glass" size="lg" className="group min-w-[200px]">
+              <Mail size={20} />
+              Me contacter
+            </Button>
+          </Link>
         </motion.div>
 
         {/* Stats or features (optional) */}

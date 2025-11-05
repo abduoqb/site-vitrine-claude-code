@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { Check, ArrowRight, Phone } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
@@ -98,17 +99,21 @@ export function Pricing() {
               </ul>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="primary" size="lg" className="flex-1 group">
-                  Démarrer mon projet
-                  <ArrowRight
-                    size={20}
-                    className="transition-transform duration-micro group-hover:translate-x-1"
-                  />
-                </Button>
-                <Button variant="glass" size="lg" className="flex-1">
-                  <Phone size={20} />
-                  Demander un appel
-                </Button>
+                <Link href="/demarrer-projet">
+                  <Button variant="primary" size="lg" className="flex-1 group">
+                    Démarrer mon projet
+                    <ArrowRight
+                      size={20}
+                      className="transition-transform duration-micro group-hover:translate-x-1"
+                    />
+                  </Button>
+                </Link>
+                <Link href="/projets">
+                  <Button variant="glass" size="lg" className="flex-1">
+                    <Phone size={20} />
+                    Demander un appel
+                  </Button>
+                </Link>
               </div>
 
               <p className="text-xs text-text-secondary text-center mt-6">

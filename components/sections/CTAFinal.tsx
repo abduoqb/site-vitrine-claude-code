@@ -45,9 +45,9 @@ export function CTAFinal() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Link href="/demarrer-projet">
               <Button
-                variant="secondary"
+                variant="outline"
                 size="lg"
-                className="group min-w-[220px] bg-white text-text-primary hover:bg-white/95 border-[3px] border-transparent bg-clip-padding relative hover:shadow-2xl before:absolute before:inset-0 before:-z-10 before:rounded-button before:p-[3px] before:bg-gradient-to-r before:from-primary-blue before:to-primary-violet hover:before:opacity-100 before:opacity-80 transition-all"
+                className="group min-w-[220px] text-white border-white/30 hover:border-white transition-colors"
               >
                 <Rocket size={20} />
                 Démarrer un projet
@@ -61,7 +61,7 @@ export function CTAFinal() {
               <Button
                 variant="outline"
                 size="lg"
-                className="min-w-[220px] text-white border-[3px] border-white hover:bg-white/20 hover:border-white"
+                className="min-w-[220px] text-white border-white/30 hover:border-white transition-colors"
               >
                 <Briefcase size={20} />
                 Voir mon portfolio

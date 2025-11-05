@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --grid-bg: #fafafa;
+  --grid-light: rgba(90, 103, 216, 0.015);
+  --grid-strong: rgba(90, 103, 216, 0.03);
+  --cell: 32px;
+  --block: 128px;
+}
+
+/* Grid Pattern Background - Subtle & Futuristic */
+body {
+  background:
+    linear-gradient(to right, var(--grid-light) 0.5px, transparent 0.5px) 0 0 / var(--cell) var(--cell),
+    linear-gradient(to bottom, var(--grid-light) 0.5px, transparent 0.5px) 0 0 / var(--cell) var(--cell),
+    linear-gradient(to right, var(--grid-strong) 0.5px, transparent 0.5px) 0 0 / var(--block) var(--block),
+    linear-gradient(to bottom, var(--grid-strong) 0.5px, transparent 0.5px) 0 0 / var(--block) var(--block),
+    var(--grid-bg);
+  background-attachment: fixed;
+  color: #1a1a2e;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Gradient text utility */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #5a67d8 0%, #9f7aea 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #5a67d8 0%, #9f7aea 100%);
+    background-size: 200% 200%;
+  }
+
+  .bg-gradient-animated {
+    background: linear-gradient(135deg, #5a67d8 0%, #9f7aea 100%);
+    background-size: 200% 200%;
+    animation: gradient 12s ease infinite;
+  }
+}
+
+/* Glass effect utility */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Focus visible styles */
+*:focus-visible {
+  outline: 2px solid #5a67d8;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #5a67d8 0%, #9f7aea 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #4a57c8 0%, #8f6a9a 100%);
+}

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -26,39 +27,40 @@ export function Navbar() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <motion.a
-            href="#"
-            className="text-2xl font-bold tracking-tight text-text-primary"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
-          >
-            Vitrine<span className="text-gradient">.</span>
-          </motion.a>
+          <Link href="/">
+            <motion.div
+              className="cursor-pointer text-2xl font-bold tracking-tight text-text-primary"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              Vitrine<span className="text-gradient">.</span>
+            </motion.div>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden items-center gap-8 md:flex">
             {NAV_LINKS.map((link, index) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                className="group relative font-medium text-text-secondary transition-colors duration-micro hover:text-text-primary"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.4 }}
-              >
-                {link.label}
-                <span className="bg-gradient-primary absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-micro group-hover:w-full" />
-              </motion.a>
+              <Link key={link.href} href={link.href}>
+                <motion.div
+                  className="group relative cursor-pointer font-medium text-text-secondary transition-colors duration-micro hover:text-text-primary"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.4 }}
+                >
+                  {link.label}
+                  <span className="bg-gradient-primary absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-micro group-hover:w-full" />
+                </motion.div>
+              </Link>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <a href="/projets">
+            <Link href="/contact">
               <Button variant="primary" size="md">
                 Contact
               </Button>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -84,20 +86,20 @@ export function Navbar() {
           >
             <div className="container mx-auto flex flex-col gap-4 px-6 py-6">
               {NAV_LINKS.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className="py-2 font-medium text-text-secondary transition-colors hover:text-text-primary"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <a href="/projets">
+              <Link href="/contact">
                 <Button variant="primary" size="md" className="mt-2 w-full">
                   Contact
                 </Button>
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

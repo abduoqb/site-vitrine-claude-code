@@ -14,7 +14,7 @@ import { Lightbulb, TrendingUp, Clock } from 'lucide-react'
 export function BentoDidYouKnow() {
   return (
     <motion.div
-      className="relative overflow-hidden rounded-card-lg p-8 md:p-10 bg-gradient-animated shadow-soft-lg group"
+      className="bg-gradient-animated group relative overflow-hidden rounded-card-lg p-8 shadow-soft-lg md:p-10"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -23,26 +23,26 @@ export function BentoDidYouKnow() {
         y: -4,
         scale: 1.01,
         boxShadow: '0 24px 50px rgba(0, 0, 0, 0.15)',
-        transition: { duration: 0.32, ease: 'easeOut' }
+        transition: { duration: 0.32, ease: 'easeOut' },
       }}
     >
       {/* Decorative blurred orbs */}
-      <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-      <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+      <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+      <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
 
       <div className="relative z-10">
         {/* Icon Header */}
-        <div className="flex items-center gap-2 mb-6">
-          <div className="p-2 rounded-lg bg-white/20 backdrop-blur-sm">
+        <div className="mb-6 flex items-center gap-2">
+          <div className="rounded-lg bg-white/20 p-2 backdrop-blur-sm">
             <Lightbulb size={20} className="text-white" />
           </div>
-          <span className="text-sm font-semibold text-white/90 uppercase tracking-wide">
+          <span className="text-sm font-semibold uppercase tracking-wide text-white/90">
             Le saviez-vous ?
           </span>
         </div>
 
         {/* Two Column Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
           {/* Stat 1 */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -51,15 +51,13 @@ export function BentoDidYouKnow() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="flex items-start gap-4"
           >
-            <div className="flex-shrink-0 p-3 rounded-xl bg-white/15 backdrop-blur-sm group-hover:bg-white/25 transition-colors duration-micro">
+            <div className="flex-shrink-0 rounded-xl bg-white/15 p-3 backdrop-blur-sm transition-colors duration-micro group-hover:bg-white/25">
               <TrendingUp size={28} className="text-white" />
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                81%
-              </div>
-              <p className="text-white/90 text-base md:text-lg leading-relaxed">
-                des consommateurs recherchent en ligne avant d'acheter
+              <div className="mb-2 text-4xl font-bold text-white md:text-5xl">81%</div>
+              <p className="text-base leading-relaxed text-white/90 md:text-lg">
+                des consommateurs recherchent en ligne avant dacheter
               </p>
             </div>
           </motion.div>
@@ -72,14 +70,12 @@ export function BentoDidYouKnow() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="flex items-start gap-4"
           >
-            <div className="flex-shrink-0 p-3 rounded-xl bg-white/15 backdrop-blur-sm group-hover:bg-white/25 transition-colors duration-micro">
+            <div className="flex-shrink-0 rounded-xl bg-white/15 p-3 backdrop-blur-sm transition-colors duration-micro group-hover:bg-white/25">
               <Clock size={28} className="text-white" />
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                24/7
-              </div>
-              <p className="text-white/90 text-base md:text-lg leading-relaxed">
+              <div className="mb-2 text-4xl font-bold text-white md:text-5xl">24/7</div>
+              <p className="text-base leading-relaxed text-white/90 md:text-lg">
                 Votre site travaille pour vous sans interruption
               </p>
             </div>
@@ -88,7 +84,7 @@ export function BentoDidYouKnow() {
 
         {/* Bottom Accent */}
         <motion.div
-          className="mt-8 pt-6 border-t border-white/20"
+          className="mt-8 border-t border-white/20 pt-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

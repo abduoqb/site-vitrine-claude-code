@@ -2,16 +2,16 @@
 export const TESTIMONIALS = [
   {
     id: 1,
-    name: 'Sophie Martin',
+    name: 'Monsieur Kiwi',
     role: 'CEO',
     company: 'TechCorp',
-    avatar: '/images/avatars/avatar-1.jpg',
+    avatar: 'monsieur_kiwi.jpg',
     rating: 5,
-    text: 'Un travail exceptionnel qui a transformé notre présence en ligne. L\'attention aux détails et la qualité du code sont remarquables.',
+    text: "Un travail exceptionnel qui a transformé notre présence en ligne. L'attention aux détails et la qualité du code sont remarquables.",
   },
   {
     id: 2,
-    name: 'Thomas Dubois',
+    name: 'Mohdef',
     role: 'Fondateur',
     company: 'StartupInc',
     avatar: '/images/avatars/avatar-2.jpg',
@@ -52,10 +52,10 @@ export const PRICING_FEATURES = [
 
 // Navigation links
 export const NAV_LINKS = [
-  { label: 'Features', href: '#features' },
+  { label: 'Accueil', href: '/' },
+  { label: 'Offres', href: '/offre' },
   { label: 'Projets', href: '/projets' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Témoignages', href: '#temoignages' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 // Social links
@@ -71,7 +71,7 @@ export const FOOTER_LINKS = {
   product: [
     { label: 'Fonctionnalités', href: '#features' },
     { label: 'Tarifs', href: '#pricing' },
-    { label: 'Cas d\'usage', href: '#case-studies' },
+    { label: "Cas d'usage", href: '#case-studies' },
     { label: 'Mises à jour', href: '#updates' },
   ],
   company: [
@@ -81,7 +81,7 @@ export const FOOTER_LINKS = {
     { label: 'Presse', href: '#press' },
   ],
   support: [
-    { label: 'Centre d\'aide', href: '#help' },
+    { label: "Centre d'aide", href: '#help' },
     { label: 'Documentation', href: '#docs' },
     { label: 'Communauté', href: '#community' },
     { label: 'Contact', href: '#contact' },

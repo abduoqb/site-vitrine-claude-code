@@ -14,7 +14,8 @@
       "Bash(git add:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nSetup: Complete design system configuration\n\n- Enhanced Tailwind config with comprehensive design tokens (colors, shadows, animations, typography scales)\n- Installed GSAP for advanced animations\n- Created Container and Section base components\n- Added centralized UI components export\n- Improved font loading with multiple weights\n- Added viewport meta configuration\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
       "Bash(git merge:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git branch:*)"
     ],
     "deny": [],
     "ask": []

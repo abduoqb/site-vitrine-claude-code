@@ -5,7 +5,13 @@
       "Bash(npm install:*)",
       "Bash(npm run dev:*)",
       "Bash(timeout:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(gh repo create:*)",
+      "Bash(winget install:*)",
+      "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" repo create \"site-vitrine-claude-code\" --public --source=. --description=\"Site vitrine/portfolio moderne créé avec Next.js, Tailwind CSS et Framer Motion - Développé avec Claude Code\" --push)",
+      "Bash(where.exe:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

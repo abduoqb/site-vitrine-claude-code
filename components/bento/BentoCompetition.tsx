@@ -43,13 +43,13 @@ export function BentoCompetition() {
 
         {/* Main stat - Big 73% */}
         <motion.div
-          className="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-br from-primary-blue to-primary-violet p-6"
+          className="relative mb-8 overflow-hidden rounded-lg bg-gradient-to-br from-primary-blue to-primary-violet p-6"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className=" absolute inset-0 rounded-3xl rounded-full bg-white/10" />
+          <div className="absolute inset-0 bg-white/10" />
           <div className="relative z-10 text-center">
             <motion.div
               className="mb-3 text-6xl font-bold text-white md:text-7xl"

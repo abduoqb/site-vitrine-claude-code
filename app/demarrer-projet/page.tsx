@@ -52,10 +52,14 @@ export default function DemarrerProjetPage() {
     setSubmitMessage('')
 
     try {
-      // Configuration EmailJS - À REMPLACER avec tes vraies clés
-      const serviceId = 'service_vado8h3'
-      const templateId = 'template_1hyc0oj'
-      const publicKey = 'av1nk08yzW_hwU9Cw'
+      // Configuration EmailJS depuis variables d'environnement
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('Configuration EmailJS manquante')
+      }
 
       const templateParams = {
         from_name: formData.nom,
@@ -122,7 +126,7 @@ export default function DemarrerProjetPage() {
           >
             <div className="glass h-full rounded-card-lg p-8">
               <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold text-text-primary">
-                <span className="text-gradient">📝</span> Parlez-nous de votre projet
+                Parlez-nous de votre projet
               </h2>
 
               <form className="space-y-5" onSubmit={handleSubmit}>
@@ -244,7 +248,7 @@ export default function DemarrerProjetPage() {
                     >
                       <Button
                         type="submit"
-                        variant="gradient"
+                        variant="primary"
                         size="lg"
                         className="group w-full disabled:cursor-not-allowed disabled:opacity-50"
                         disabled={!isFormValid || isSubmitting}
@@ -291,13 +295,13 @@ export default function DemarrerProjetPage() {
           >
             <div className="glass relative h-full min-h-[700px] overflow-hidden rounded-card-lg p-8">
               <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold text-text-primary">
-                <span className="text-gradient">📅</span> Prenez rendez-vous
+                Prenez rendez-vous
               </h2>
 
-              {/* Calendly iframe (replace with your Calendly link) */}
+              {/* Calendly iframe */}
               <div className="h-[600px] w-full overflow-hidden rounded-lg">
                 <iframe
-                  src="https://calendly.com/abdulaziz-oqb/30min"
+                  src={process.env.NEXT_PUBLIC_CALENDLY_URL || ''}
                   width="100%"
                   height="100%"
                   frameBorder="0"

@@ -55,7 +55,6 @@ export const NAV_LINKS = [
   { label: 'Accueil', href: '/' },
   { label: 'Offres', href: '/offre' },
   { label: 'Projets', href: '/projets' },
-  { label: 'Contact', href: '/contact' },
 ]
 
 // Social links

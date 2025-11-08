@@ -2,12 +2,21 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Check, ArrowRight, Phone } from 'lucide-react'
+import { Check, ArrowRight } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
-import { PRICING_FEATURES } from '@/lib/constants'
-import { formatPrice } from '@/lib/utils'
+
+const premiumFeatures = [
+  'Site sur-mesure pages illimitées',
+  'Design premium + 3 maquettes',
+  'SEO avancé (score 95+)',
+  'Blog professionnel + CMS intuitif',
+  'Hébergement 1 AN OFFERT',
+  'Domaine .com/.fr offert',
+  'Support prioritaire 90 jours',
+  'Bonus : Logo + 10 visuels RS',
+]
 
 const checkmarkVariants = {
   hidden: { opacity: 0, x: -10 },
@@ -65,7 +74,7 @@ export function Pricing() {
 
               <div className="flex items-baseline justify-center gap-2 mb-2">
                 <span className="text-6xl font-bold text-gradient">
-                  {formatPrice(1500)}
+                  1 500 €
                 </span>
               </div>
 
@@ -83,7 +92,7 @@ export function Pricing() {
               </p>
 
               <ul className="space-y-3 mb-8">
-                {PRICING_FEATURES.map((feature, index) => (
+                {premiumFeatures.map((feature, index) => (
                   <motion.li
                     key={index}
                     className="flex items-center gap-3 text-text-secondary"
@@ -117,7 +126,7 @@ export function Pricing() {
                       size={20}
                       className="transition-transform duration-micro group-hover:translate-x-1"
                     />
-                    Découvrir l'offre
+                    Découvrir l&apos;offre
                   </Button>
                 </Link>
               </div>

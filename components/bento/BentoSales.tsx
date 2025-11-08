@@ -14,7 +14,7 @@ export function BentoSales() {
         </Badge>
 
         <h3 className="text-2xl font-bold text-text-primary mb-2">
-          +47% de chiffre d'affaires
+          +47% de chiffre d&apos;affaires
         </h3>
         <p className="text-sm text-text-secondary mb-6">
           En moyenne après 6 mois de présence en ligne

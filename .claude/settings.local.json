@@ -16,7 +16,9 @@
       "Bash(git merge:*)",
       "Bash(git commit:*)",
       "Bash(git branch:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(npm run build:*)",
+      "Bash(git pull:*)"
     ],
     "deny": [],
     "ask": []

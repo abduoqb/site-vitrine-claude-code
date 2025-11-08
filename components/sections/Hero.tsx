@@ -92,7 +92,7 @@ export function Hero() {
               />
             </Button>
           </Link>
-          <Link href="#demo">
+          <Link href="/en-cours">
             <Button variant="glass" size="lg" className="group w-full sm:w-auto sm:min-w-[200px]">
               <Play size={20} className="transition-transform duration-micro group-hover:scale-110" />
               Démo interactive

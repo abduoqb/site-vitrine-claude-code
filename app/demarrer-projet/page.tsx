@@ -8,6 +8,40 @@ import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import emailjs from '@emailjs/browser'
 
+// Composant Confettis
+const Confetti = () => {
+  const confettiColors = ['#5a67d8', '#9f7aea', '#f6ad55', '#fc8181', '#4fd1c5']
+  const confettiCount = 50
+
+  return (
+    <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
+      {Array.from({ length: confettiCount }).map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute h-3 w-3 rounded-full"
+          style={{
+            backgroundColor: confettiColors[i % confettiColors.length],
+            left: `${Math.random() * 100}%`,
+            top: '-10%',
+          }}
+          initial={{ y: 0, x: 0, opacity: 1, rotate: 0 }}
+          animate={{
+            y: ['0vh', '110vh'],
+            x: [0, Math.random() * 200 - 100],
+            opacity: [1, 1, 0],
+            rotate: [0, Math.random() * 720 - 360],
+          }}
+          transition={{
+            duration: 2 + Math.random() * 2,
+            delay: Math.random() * 0.5,
+            ease: 'easeOut',
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default function DemarrerProjetPage() {
   const [formData, setFormData] = useState({
     nom: '',
@@ -21,6 +55,20 @@ export default function DemarrerProjetPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
+  const [showConfetti, setShowConfetti] = useState(false)
+
+  // Calcul de la progression
+  const calculateProgress = () => {
+    let filled = 0
+    if (formData.nom.trim() !== '') filled++
+    if (formData.email.includes('@')) filled++
+    if (formData.telephone.trim() !== '') filled++
+    if (formData.typeProjet !== '') filled++
+    if (formData.description.trim().length >= 20) filled++
+    return (filled / 5) * 100
+  }
+
+  const progress = calculateProgress()
 
   // Validation du formulaire
   useEffect(() => {
@@ -73,6 +121,10 @@ export default function DemarrerProjetPage() {
 
       setIsSubmitted(true)
       setSubmitMessage('✅ Formulaire envoyé ! Le calendrier est maintenant débloqué.')
+      setShowConfetti(true)
+
+      // Arrêter les confettis après 4 secondes
+      setTimeout(() => setShowConfetti(false), 4000)
     } catch (error) {
       console.error("Erreur lors de l'envoi:", error)
       setSubmitMessage("❌ Erreur lors de l'envoi. Veuillez réessayer.")
@@ -83,8 +135,11 @@ export default function DemarrerProjetPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      {/* Confettis */}
+      {showConfetti && <Confetti />}
+
       {/* Header with back button */}
-      <div className="container mx-auto px-6 py-6">
+      <div className="container mx-auto px-4 py-4 md:px-6 md:py-6">
         <Link href="/">
           <Button variant="glass" size="md" className="group">
             <ArrowLeft
@@ -97,39 +152,57 @@ export default function DemarrerProjetPage() {
       </div>
 
       {/* Main content */}
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-4 py-6 md:px-6 md:py-12">
         {/* Page title */}
         <motion.div
-          className="mb-12 text-center"
+          className="mb-6 text-center md:mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Badge variant="default" icon={<Sparkles size={16} />} className="mb-4">
+          <Badge variant="default" icon={<Sparkles size={16} />} className="mb-3 md:mb-4">
             Démarrons votre projet
           </Badge>
-          <h1 className="mb-4 text-4xl font-bold text-text-primary md:text-5xl">
+          <h1 className="mb-3 text-3xl font-bold text-text-primary md:mb-4 md:text-5xl">
             Créons quelque chose d&apos;exceptionnel ensemble
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-text-secondary">
+          <p className="mx-auto max-w-2xl text-base text-text-secondary md:text-lg">
             Remplissez le formulaire ci-dessous pour débloquer le calendrier et prendre rendez-vous
           </p>
         </motion.div>
 
         {/* Two columns layout */}
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
           {/* LEFT: Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="glass h-full rounded-card-lg p-8">
-              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold text-text-primary">
+            <div className="glass h-full rounded-card-lg p-5 md:p-8">
+              <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-text-primary md:mb-6 md:text-2xl">
                 Parlez-nous de votre projet
               </h2>
 
-              <form className="space-y-5" onSubmit={handleSubmit}>
+              {/* Barre de progression */}
+              <div className="mb-6">
+                <div className="mb-2 flex items-center justify-between text-sm">
+                  <span className="text-text-secondary">Progression</span>
+                  <span className="font-semibold text-primary-blue">
+                    {Math.round(progress)}%
+                  </span>
+                </div>
+                <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                  <motion.div
+                    className="h-full bg-gradient-primary"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${progress}%` }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                  />
+                </div>
+              </div>
+
+              <form className="space-y-4 md:space-y-5" onSubmit={handleSubmit}>
                 {/* Nom */}
                 <div>
                   <label className="mb-2 block text-sm font-semibold text-text-primary">
@@ -293,13 +366,13 @@ export default function DemarrerProjetPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="glass relative h-full min-h-[700px] overflow-hidden rounded-card-lg p-8">
-              <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold text-text-primary">
+            <div className="glass relative h-full min-h-[500px] overflow-hidden rounded-card-lg p-5 md:min-h-[700px] md:p-8">
+              <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-text-primary md:mb-6 md:text-2xl">
                 Prenez rendez-vous
               </h2>
 
               {/* Calendly iframe */}
-              <div className="h-[600px] w-full overflow-hidden rounded-lg">
+              <div className="h-[400px] w-full overflow-hidden rounded-lg md:h-[600px]">
                 <iframe
                   src={process.env.NEXT_PUBLIC_CALENDLY_URL || ''}
                   width="100%"
@@ -313,22 +386,22 @@ export default function DemarrerProjetPage() {
               <AnimatePresence>
                 {!isSubmitted && (
                   <motion.div
-                    className="absolute inset-0 flex items-center justify-center rounded-card-lg bg-gray-900/30 backdrop-blur-md"
+                    className="absolute inset-0 flex items-center justify-center rounded-card-lg bg-gray-900/30 backdrop-blur-md px-4"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <div className="glass-strong max-w-md rounded-2xl p-8 text-center">
-                      <Lock size={64} className="mx-auto mb-4 text-gray-400" />
-                      <h3 className="mb-3 text-2xl font-bold text-text-primary">
+                    <div className="glass-strong max-w-md rounded-2xl p-6 text-center md:p-8">
+                      <Lock size={48} className="mx-auto mb-3 text-gray-400 md:mb-4 md:size-16" />
+                      <h3 className="mb-2 text-xl font-bold text-text-primary md:mb-3 md:text-2xl">
                         Calendrier verrouillé
                       </h3>
-                      <p className="mb-4 text-text-secondary">
+                      <p className="mb-3 text-sm text-text-secondary md:mb-4 md:text-base">
                         Veuillez compléter et soumettre le formulaire pour débloquer le calendrier
                         et prendre rendez-vous
                       </p>
-                      <div className="flex items-center justify-center gap-2 text-sm text-text-secondary">
+                      <div className="flex items-center justify-center gap-2 text-xs text-text-secondary md:text-sm">
                         <div className="h-2 w-2 rounded-full bg-red-500"></div>
                         <span>
                           {isFormValid ? 'Cliquez sur soumettre' : 'Formulaire incomplet'}

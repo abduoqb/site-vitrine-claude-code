@@ -2,7 +2,7 @@
 
 Site portfolio/SaaS ultra premium avec Next.js 14, Tailwind CSS et animations optimisées.
 
-<img width="2854" height="1389" alt="image" src="https://github.com/user-attachments/assets/ed32e1c9-da3e-42ba-a297-9b6150dab793" />
+<img width="2821" height="1384" alt="Capture d&#39;écran 2025-11-09 221552" src="https://github.com/user-attachments/assets/2e6a314d-96e7-4a47-939a-1f52306079cc" />
 
 ## 🎯 Performances PageSpeed Insights
 

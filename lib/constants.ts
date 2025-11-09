@@ -83,7 +83,7 @@ export const FOOTER_LINKS = {
     { label: "Centre d'aide", href: '#help' },
     { label: 'Documentation', href: '#docs' },
     { label: 'Communauté', href: '#community' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Nous contacter', href: '#contact' }, // Unique label for accessibility
   ],
   legal: [
     { label: 'Confidentialité', href: '#privacy' },

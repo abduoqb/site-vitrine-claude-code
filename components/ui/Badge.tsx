@@ -20,7 +20,7 @@ export function Badge({
 
   const variants = {
     default:
-      'bg-blue-50 text-primary-blue border border-blue-100 shadow-sm',
+      'bg-blue-100 text-blue-700 border border-blue-200 shadow-sm', // Improved contrast: 4.5:1+ WCAG AA
     gradient:
       'bg-gradient-primary text-white shadow-soft',
     outline:

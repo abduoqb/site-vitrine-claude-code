@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 
 const inter = Inter({
@@ -12,28 +13,28 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Portfolio Premium | Créateur d\'expériences digitales',
-    template: '%s | Portfolio Premium'
+    default: 'Vitr. | Créateur d\'expériences digitales',
+    template: '%s | Vitr.'
   },
   description: 'Site portfolio et SaaS ultra premium. Transformons ensemble vos idées en réalité avec des expériences digitales uniques et mémorables.',
   keywords: ['portfolio', 'saas', 'développement web', 'design premium', 'next.js', 'création site web', 'développeur freelance'],
   authors: [{ name: 'Votre Nom' }],
-  creator: 'Portfolio Premium',
-  publisher: 'Portfolio Premium',
+  creator: 'Vitr.',
+  publisher: 'Vitr.',
 
   // Open Graph
   openGraph: {
-    title: 'Portfolio Premium | Créateur d\'expériences digitales',
+    title: 'Vitr. | Créateur d\'expériences digitales',
     description: 'Transformons ensemble vos idées en réalité avec des expériences digitales uniques et mémorables.',
     type: 'website',
     locale: 'fr_FR',
-    siteName: 'Portfolio Premium',
+    siteName: 'Vitr.',
   },
 
   // Twitter Card
   twitter: {
     card: 'summary_large_image',
-    title: 'Portfolio Premium | Créateur d\'expériences digitales',
+    title: 'Vitr. | Créateur d\'expériences digitales',
     description: 'Transformons ensemble vos idées en réalité avec des expériences digitales uniques et mémorables.',
     creator: '@votrecompte',
   },
@@ -69,9 +70,31 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // Google Analytics Measurement ID - Remplacez par votre ID GA4
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-XXXXXXXXXX'
+
   return (
     <html lang="fr" className={inter.variable} suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
+        {/* Google Analytics */}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
         {children}
       </body>
     </html>

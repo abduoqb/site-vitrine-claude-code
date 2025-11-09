@@ -1,4 +1,4 @@
-# Site Vitrine SaaS - Portfolio Premium
+# Vitr. - Site Vitrine SaaS
 
 Site portfolio/SaaS ultra premium avec Next.js 14, Tailwind CSS et animations optimisées.
 
@@ -279,6 +279,106 @@ npm run format   # Formatage Prettier
 - ✅ Données structurées
 - ✅ URLs propres
 
+## 📊 Google Analytics
+
+Le site est configuré avec Google Analytics 4 (GA4) pour le suivi des performances et du trafic.
+
+### Configuration
+
+1. Créez un compte Google Analytics sur [analytics.google.com](https://analytics.google.com/)
+2. Créez une propriété GA4 et récupérez votre ID de mesure (format: `G-XXXXXXXXXX`)
+3. Créez un fichier `.env.local` à la racine du projet :
+
+```bash
+# Copiez le fichier d'exemple
+cp .env.local.example .env.local
+```
+
+4. Ajoutez votre ID de mesure dans `.env.local` :
+
+```env
+NEXT_PUBLIC_GA_ID=G-VOTRE-ID-ICI
+```
+
+5. Sur Vercel, ajoutez la variable d'environnement dans Settings > Environment Variables
+
+Le tracking GA4 est automatiquement activé uniquement en production (NODE_ENV=production).
+
+## 🗺️ Soumission du Sitemap à Google Search Console
+
+Pour améliorer le référencement SEO, soumettez votre sitemap à Google Search Console :
+
+### Étape 1 : Créer un compte Google Search Console
+
+1. Rendez-vous sur [Google Search Console](https://search.google.com/search-console/)
+2. Connectez-vous avec votre compte Google
+3. Cliquez sur "Ajouter une propriété"
+
+### Étape 2 : Ajouter votre site
+
+Deux options disponibles :
+
+**Option A : Domaine** (recommandé si vous contrôlez le DNS)
+- Saisissez votre domaine : `site-vitrine-claude-code.vercel.app`
+- Vérifiez via enregistrement DNS TXT
+
+**Option B : Préfixe d'URL**
+- Saisissez l'URL complète : `https://site-vitrine-claude-code.vercel.app`
+- Plusieurs méthodes de vérification disponibles :
+  - **Balise HTML** : Ajoutez une balise meta dans `app/layout.tsx`
+  - **Fichier HTML** : Téléchargez un fichier dans `/public`
+  - **Google Analytics** : Si GA4 est configuré avec le même compte
+  - **Google Tag Manager** : Si vous utilisez GTM
+
+### Étape 3 : Vérification via balise HTML (méthode recommandée)
+
+1. Copiez la balise meta fournie par Google (format: `<meta name="google-site-verification" content="VOTRE_CODE" />`)
+2. Ajoutez-la dans `app/layout.tsx` dans la section metadata :
+
+```tsx
+export const metadata: Metadata = {
+  // ... existing metadata
+  verification: {
+    google: 'VOTRE_CODE_DE_VERIFICATION',
+  },
+}
+```
+
+3. Déployez sur Vercel avec `git push`
+4. Retournez dans Search Console et cliquez sur "Vérifier"
+
+### Étape 4 : Soumettre le sitemap
+
+Une fois votre site vérifié :
+
+1. Dans le menu de gauche, cliquez sur **"Sitemaps"**
+2. Dans le champ "Ajouter un sitemap", entrez : `sitemap.xml`
+3. Cliquez sur **"Envoyer"**
+
+Votre sitemap est maintenant soumis ! Google va commencer à explorer votre site.
+
+### Étape 5 : Vérifier l'état du sitemap
+
+- **État : Réussite** = Google a bien reçu et traité votre sitemap
+- **État : En attente** = Google va traiter le sitemap sous peu
+- **État : Erreur** = Vérifiez que votre sitemap est accessible à `https://site-vitrine-claude-code.vercel.app/sitemap.xml`
+
+### URLs du sitemap
+
+Le sitemap actuel contient 6 pages :
+- `/` (Accueil) - Priorité : 1.0
+- `/offre` (Offres) - Priorité : 0.9
+- `/contact` (Contact) - Priorité : 0.8
+- `/demarrer-projet` (Démarrer un projet) - Priorité : 0.9
+- `/projets` (Portfolio) - Priorité : 0.8
+- `/en-cours` (Travaux en cours) - Priorité : 0.3
+
+### Temps d'indexation
+
+- **Première indexation** : 1 à 7 jours après soumission
+- **Mises à jour** : Google revisite automatiquement selon la fréquence définie
+- **Vérification** : Tapez `site:site-vitrine-claude-code.vercel.app` dans Google pour voir les pages indexées
+
 ## 🚀 Déploiement Vercel
 
 Le site est configuré pour un déploiement automatique sur Vercel :
@@ -299,11 +399,12 @@ git push origin master
 - [x] ~~Déployer sur Vercel~~ (Déployé et en production)
 - [x] ~~Optimiser performance Lighthouse 90+~~ (99-100 atteint !)
 - [x] ~~Optimiser accessibilité AA~~ (96-100 atteint !)
+- [x] ~~Configurer Google Analytics~~ (GA4 intégré, nécessite ID de mesure)
+- [x] ~~Ajouter sitemap.xml dynamique~~ (sitemap.xml + robots.txt créés)
+- [ ] Soumettre sitemap à Google Search Console
 - [ ] Ajouter des images réelles dans `/public/images`
 - [ ] Connecter le formulaire newsletter à Mailchimp/SendGrid
 - [ ] Ajouter contenu page projets/portfolio
-- [ ] Configurer Google Analytics / Plausible
-- [ ] Ajouter sitemap.xml dynamique
 
 ## 📄 Licence
 

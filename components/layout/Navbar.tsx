@@ -33,7 +33,7 @@ export function Navbar() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              Vitrine<span className="text-gradient">.</span>
+              Vitr<span className="text-gradient">.</span>
             </motion.div>
           </Link>
 
